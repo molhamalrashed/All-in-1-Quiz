@@ -15,9 +15,11 @@ import { popUp } from '../views/popUp.js';
 let score = 0;
 let user;
 let timerObject;
+let savedSelection;
 export let submitClicked = false;
 export const initQuestionPage = ({userName,scoreValue,selectedAnswer}) => {
   createStorage(user, null , score ,quizData.currentQuestionIndex);
+  savedSelection = selectedAnswer;
   
   user = userName;
   if(typeof scoreValue !== 'undefined'){score = scoreValue}
@@ -85,7 +87,7 @@ const nextQuestion = () => {
 };
 
 export const submitAnswer = () => {
-
+  
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
   const answersListElement = document.getElementById(ANSWERS_LIST_ID);
   const submitButtonElement = document.getElementById(SUBMIT_ANSWER_BUTTON_ID);
@@ -98,8 +100,8 @@ export const submitAnswer = () => {
       answerElement.classList.add('alreadyClicked');
 
     if (isSelected) {
-      
-      if (radioInput.value === currentQuestion.correct) {
+      console.log(savedSelection);
+      if (radioInput.value === currentQuestion.correct || savedSelection === currentQuestion.correct) {
         answerElement.classList.add('green');
         score = score + 10;
         createScore(score);
@@ -111,9 +113,9 @@ export const submitAnswer = () => {
     }
   });
 
-  const currentUser = JSON.parse(sessionStorage.getItem("currentUser"));
+  const currentUser = retrieveStorage();
   
-  if(currentUser.selectedAnswer && submitClicked) {
+  if((savedSelection || currentUser.selectedAnswer) && submitClicked) {
     const correctAnswer = document.querySelector(
     `input[value="${currentQuestion.correct}"]`
   );
