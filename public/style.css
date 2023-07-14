@@ -1,0 +1,335 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins' sans-serif;
+}
+
+#user-interface{
+  background-color: transparent;
+
+}
+
+
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.scrollable {
+  height: auto;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+
+
+.green {
+  background-color: green;
+}
+.red {
+  background-color: red;
+}
+.alreadyClicked {
+  pointer-events: none;
+}
+body {
+  background-color: gray;
+  content: "";
+  z-index: -1;
+  background-image: url(img/background-img.jpg);
+  
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  
+}
+
+
+
+h1 h2 {
+  font-weight: bolder;
+  text-align: center;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.welcome-container {
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+  font-size:2rem ;
+  
+
+}
+#headerText{
+ 
+  margin-bottom: 30px;
+}
+#countdown {
+  font-size: 10rem;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: countdown-animation 1s ease-in-out infinite;
+  border: none;
+}
+
+@keyframes countdown-animation {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+#userName {
+  width: 50%;
+  height: 40px;
+  line-height: 28px;
+  padding: 0 1rem;
+  padding-left: 2.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: #f3f3f4;
+  color: #0d0c22;
+  transition: .3s ease;
+  margin-bottom: 20px;
+ }
+ #userName:focus, input:hover {
+  outline: none;
+  border-color: rgba(241, 3, 95, 0.548);
+  background-color: #fff;
+  box-shadow: 0 0 0 4px rgba(243, 3, 95, 0.1);
+ }
+ #userName::placeholder {
+  color: #5f5f9b;
+ }
+ #startButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100px;
+}
+#startButton {
+  position: relative;
+  width: 140px;
+  height: 50px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  color: white;
+  flex-direction: column;
+  justify-content: center;
+  border: none;
+  padding: 12px;
+  gap: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#startButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -4px;
+  top: -1px;
+  margin: auto;
+  width: 148px;
+  height: 60px;
+  border-radius: 10px;
+  background: linear-gradient(-45deg, #e81cff 0%, #40c9ff 100% );
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#startButton::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #fc00ff 0%, #00dbde 100% );
+  transform: translate3d(0, 0, 0) scale(0.95);
+  filter: blur(20px);
+}
+
+#startButton:hover::after {
+  filter: blur(30px);
+}
+
+#startButton:hover::before {
+  transform: rotate(-180deg);
+}
+
+#startButton:active::before {
+  scale: 0.7;
+}
+
+
+
+.popup {
+  color: white;
+  width: 320px;
+  height: 150px;
+  font-weight: bold;
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 40px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.87);
+  animation-duration: 1s;
+  animation-fill-mode:both;
+  background: rgba(95, 93, 93, 0.25);
+
+
+font-size: 1.2rem;
+}
+
+.popup-slide-in {
+  animation-name: slideIn;
+}
+
+.popup-slide-out {
+  animation-name: slideOut;
+}
+
+@keyframes slideIn {
+  0% {
+    top: -100px;
+  }
+  100% {
+    top: 20px;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    top: 20px;
+  }
+  100% {
+    top: -100px;
+  }
+}
+.question-element{
+  background-color:transparent;
+  padding: 20px;
+}
+.question-element h1 {
+  color: white;
+  background-color: transparent;
+  padding: 20px;
+  margin-top: 15px;   
+  font-weight: bold;
+  margin-bottom: 15px;
+ }
+
+
+ ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  list-style: none;
+  background-color: transparent;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+li {
+font-size: 1rem;
+  font-size: 1rem;
+  display: inline-block;
+  box-sizing: border-box;
+  min-width: 15rem;
+  padding: 25px;
+  background-color: whitesmoke;
+  border: 3px solid rgba(35, 159, 173, 0.621);
+  border-radius: 10px;
+  text-align: start;
+  box-shadow: rgb(175, 159, 159);
+  margin: 20px;
+  cursor: pointer;
+}
+button {
+  color: white;
+  background-color: rgba(35, 159, 173, 0.621);
+  border: none;
+  min-width: 17rem;
+  padding: 15px 15px;
+  margin: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 4px;
+  border: solid 1px white;
+}
+
+.timerElement {
+  border-top: none;
+  background-color: transparent;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  font-size: 3rem;
+  font-weight: bold;
+  height: 80px;
+}
+.myScore {
+  position: relative;
+  left: 70%;
+  background-color: rgba(115, 144, 147, 0.308);
+  font-size: 20px;
+  max-width: 250px;
+  padding: 15px 15px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  border: solid 1px white;
+  border-radius: 30px;
+}
+
+.passive-button {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.final-message{
+  margin: 33px;
+    color: white;
+    font-size: 40px;
+    width: 800px;
+}
+
+#start-over:hover {
+  background-color: #85d6dca5;
+  color: #000;
+  transition: background-color 0.5s ease;
+}
