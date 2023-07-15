@@ -10,7 +10,19 @@
 
 }
 
+#categories-list{
+  width: 150px;
+  height: 30px;
+  border-radius: 9px;
+  text-align: center;
+  font-size: 18px;
+}
 
+#choose-category{
+  margin: 20px;
+  color: white;
+  font-size: 30px;
+}
 
 .centered {
   position: fixed;

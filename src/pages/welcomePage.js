@@ -1,12 +1,14 @@
 import { USER_INTERFACE_ID, START_QUIZ_BUTTON_ID } from '../constants.js';
 import { createWelcomeElement } from '../views/welcomeView.js';
 import { initQuestionPage } from './questionPage.js';
+import { options } from '../data.js';
 
 
 let userName;
 export const initWelcomePage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
+  
 
   // const welcomeElement = createWelcomeElement();
   // userInterface.appendChild(welcomeElement);
@@ -19,7 +21,7 @@ export const initWelcomePage = () => {
 
   // Create welcome heading
   const welcomeHeading = document.createElement('h1');
-  welcomeHeading.textContent = 'CODERS CAPITAL QUIZ';
+  welcomeHeading.textContent = 'All-in-1 QUIZ';
   welcomeHeading.classList.add('welcome-heading');
   welcomeContainer.appendChild(welcomeHeading);
 
@@ -39,6 +41,23 @@ userNameInput.type = "text";
 userNameInput.placeholder = "Enter your name";
 userInterface.appendChild(userNameInput);
 
+// create the the questions categories 
+const categoriesDiv = document.createElement("div");
+const categoriesList = document.createElement("select");
+categoriesList.id = "categories-list";
+const chooseCategory = document.createElement('h2');
+chooseCategory.id = 'choose-category'
+chooseCategory.textContent = "choose Your favorite category";
+categoriesDiv.appendChild(chooseCategory);
+
+options.forEach((option) => {
+  const optionElement = document.createElement("option");
+  optionElement.value = option.value;
+  optionElement.textContent = option.label;
+  categoriesList.appendChild(optionElement);
+})
+categoriesDiv.appendChild(categoriesList);
+userInterface.appendChild(categoriesDiv);
 
   // Create a line break
   userInterface.appendChild(document.createElement("br"));
