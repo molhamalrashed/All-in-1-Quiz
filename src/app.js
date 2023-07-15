@@ -16,6 +16,8 @@ const loadApp = () => {
   }
 };
 
+
+window.onload = loadApp();
 window.addEventListener('load', loadApp);
 
 
