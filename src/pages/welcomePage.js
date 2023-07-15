@@ -1,9 +1,9 @@
 import { USER_INTERFACE_ID, START_QUIZ_BUTTON_ID } from '../constants.js';
 import { createWelcomeElement } from '../views/welcomeView.js';
 import { initQuestionPage } from './questionPage.js';
-import { options } from '../data.js';
+import { options, createQuizData } from '../data.js';
 
-
+export let selectedLink = '';
 let userName;
 export const initWelcomePage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -50,6 +50,11 @@ chooseCategory.id = 'choose-category'
 chooseCategory.textContent = "choose Your favorite category";
 categoriesDiv.appendChild(chooseCategory);
 
+const placeholder = document.createElement("option");
+categoriesList.appendChild(placeholder);
+
+
+
 options.forEach((option) => {
   const optionElement = document.createElement("option");
   optionElement.value = option.value;
@@ -58,6 +63,14 @@ options.forEach((option) => {
 })
 categoriesDiv.appendChild(categoriesList);
 userInterface.appendChild(categoriesDiv);
+
+categoriesList.addEventListener('change', function(){
+  const selectedOption = categoriesList.options[categoriesList.selectedIndex];
+  const link = selectedOption.value;
+  selectedLink = link;
+  createQuizData(selectedLink);
+  
+})
 
   // Create a line break
   userInterface.appendChild(document.createElement("br"));
@@ -75,12 +88,13 @@ startButton.textContent = 'Start Quiz';
 startButton.addEventListener('click', () => {
   // we get the userName element by id
   const userNameInput = document.getElementById("userName");
-
+  const categoryList = document.getElementById("categories-list");
+  
    //get the users name 
   userName = userNameInput.value;
-
+  console.log(categoryList.selectedIndex);
   // if the users enters a name call the countdown
-  if (userName !== "") {
+  if (userName !== "" && categoryList.selectedIndex !== 0) {
     countdown(); // Call the countdown function if the name is entered
   } else {
      // Create the popup element
@@ -93,7 +107,7 @@ startButton.addEventListener('click', () => {
 
     // Create the popup message
     const popupMessage = document.createElement('p');
-    popupMessage.textContent = 'Please enter your name before starting the quiz.';
+    popupMessage.textContent = 'Please enter your name and choose a category before starting the quiz.';
 
     // Append the popup message to the popup content
     popupContent.appendChild(popupMessage);
