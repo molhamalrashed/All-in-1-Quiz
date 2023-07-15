@@ -9,6 +9,16 @@
     not by your listeners
 */
 
+export const options = [
+  {label: 'Movies', value:'https://opentdb.com/api.php?amount=50&category=11&difficulty=easy&type=multiple'},
+  {label: 'Music', value: 'https://opentdb.com/api.php?amount=50&category=12&difficulty=easy&type=multiple'},
+  {label: 'Sport', value: 'https://opentdb.com/api.php?amount=40&category=21&difficulty=easy&type=multiple'},
+  {label: 'Computer', value: 'https://opentdb.com/api.php?amount=30&category=18&difficulty=easy&type=multiple'},
+  {label: 'Geography', value:'https://opentdb.com/api.php?amount=40&category=22&difficulty=easy&type=multiple'},
+  {label:'History', value: 'https://opentdb.com/api.php?amount=40&category=23&difficulty=easy&type=multiple'}
+]
+
+
 
 export const quizData = {
   currentQuestionIndex: 0,
