@@ -1,4 +1,4 @@
-import {selectedLink} from './pages/welcomePage.js';
+
 
   /* Program Data
 
@@ -11,6 +11,23 @@ import {selectedLink} from './pages/welcomePage.js';
     not by your listeners
   */
   
+export let quizData = {
+  currentQuestionIndex: 0,
+  questions: [
+    {
+      text: 'What is the capital city of France?',
+      answers: {
+        a: 'Paris',
+        b: 'Rome',
+        c: 'Madrid',
+        d: 'London',
+      },
+      correct: 'a',
+    }
+    ]
+}
+
+
   export const options = [
   {label: 'Movies', value:'https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple'},
   {label: 'Music', value: 'https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple'},
@@ -57,7 +74,7 @@ import {selectedLink} from './pages/welcomePage.js';
  }
   
     
-  export async function createQuizData (link){
+   async function createQuizData (link){
       try{
         const data = await fetchData(link);
         const questions = [];
@@ -72,19 +89,19 @@ import {selectedLink} from './pages/welcomePage.js';
           currentQuestionIndex: 0,
           questions: questions
         }
-        console.log(questions);
+    
         return Data;
     } catch(err) {
       console.log('error');
     }
   }
   
-  async function processQuizData() {
-    const quizData = await createQuizData();  
-     return quizData;
+  export async function processQuizData(link) {
+    quizData = await createQuizData(link);  
+    console.log(quizData);
   }
   
-   export const quizData = await processQuizData();
+  
    
 
 

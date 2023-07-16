@@ -1,9 +1,9 @@
 import { USER_INTERFACE_ID, START_QUIZ_BUTTON_ID } from '../constants.js';
 import { createWelcomeElement } from '../views/welcomeView.js';
 import { initQuestionPage } from './questionPage.js';
-import { options, createQuizData } from '../data.js';
+import { options, processQuizData } from '../data.js';
 
-export let selectedLink = '';
+
 let userName;
 export const initWelcomePage = () => {
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -67,8 +67,7 @@ userInterface.appendChild(categoriesDiv);
 categoriesList.addEventListener('change', function(){
   const selectedOption = categoriesList.options[categoriesList.selectedIndex];
   const link = selectedOption.value;
-  selectedLink = link;
-  createQuizData(selectedLink);
+  processQuizData(link);
   
 })
 
