@@ -53,8 +53,6 @@ categoriesDiv.appendChild(chooseCategory);
 const placeholder = document.createElement("option");
 categoriesList.appendChild(placeholder);
 
-
-
 options.forEach((option) => {
   const optionElement = document.createElement("option");
   optionElement.value = option.value;
@@ -63,13 +61,6 @@ options.forEach((option) => {
 })
 categoriesDiv.appendChild(categoriesList);
 userInterface.appendChild(categoriesDiv);
-
-categoriesList.addEventListener('change', function(){
-  const selectedOption = categoriesList.options[categoriesList.selectedIndex];
-  const link = selectedOption.value;
-  processQuizData(link);
-  
-})
 
   // Create a line break
   userInterface.appendChild(document.createElement("br"));
@@ -87,13 +78,17 @@ startButton.textContent = 'Start Quiz';
 startButton.addEventListener('click', () => {
   // we get the userName element by id
   const userNameInput = document.getElementById("userName");
+  // get the select element and retrieve value from it
   const categoryList = document.getElementById("categories-list");
+  const selectedOption = categoryList.options[categoryList.selectedIndex];
+  const link = selectedOption.value;
   
    //get the users name 
   userName = userNameInput.value;
-  console.log(categoryList.selectedIndex);
+  
   // if the users enters a name call the countdown
   if (userName !== "" && categoryList.selectedIndex !== 0) {
+    processQuizData(link);
     countdown(); // Call the countdown function if the name is entered
   } else {
      // Create the popup element
