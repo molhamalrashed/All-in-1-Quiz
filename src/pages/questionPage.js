@@ -12,21 +12,21 @@ import { createStorage, retrieveStorage,storeQuizData } from './sessionStorage.j
 import { displayResults } from '../views/endPage.js';
 import { createTimer, timer } from '../timer.js';
 import { popUp } from '../views/popUp.js';
-let score = 0;
+let score;
 let user;
 let timerObject;
 let savedSelection;
 export let submitClicked = false;
 export const initQuestionPage = ({userName,scoreValue,selectedAnswer,savedQuizData}) => {
-  createStorage(user, null , score ,quizData.currentQuestionIndex);
-  savedSelection = selectedAnswer;
  
-
+  savedSelection = selectedAnswer;
+  
+ 
+  
   if(savedQuizData){
     quizData.currentQuestionIndex = savedQuizData.currentQuestionIndex;
     quizData.questions = savedQuizData.questions;
     clearInterval(timer);
-
   }
 
 
@@ -34,8 +34,8 @@ export const initQuestionPage = ({userName,scoreValue,selectedAnswer,savedQuizDa
   if(typeof scoreValue !== 'undefined'){score = scoreValue}
   const userInterface = document.getElementById(USER_INTERFACE_ID);
   userInterface.innerHTML = '';
-   
-
+  
+  
   const scoreElement = createScore(score);
   userInterface.prepend(scoreElement);
 
@@ -107,9 +107,8 @@ export const submitAnswer = () => {
     
 
       answerElement.classList.add('alreadyClicked');
-
+     
     if (isSelected) {
-      console.log(savedSelection);
       if (radioInput.value === currentQuestion.correct || savedSelection === currentQuestion.correct) {
         answerElement.classList.add('green');
         score = score + 10;
