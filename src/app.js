@@ -14,6 +14,7 @@ const loadApp = () => {
   else {
     quizData.currentQuestionIndex = userData.currentQuestionIndex;
     initQuestionPage({scoreValue:userData.score, userName : userData.name, selectedAnswer: userData.selectedAnswer, savedQuizData});
+    console.log(userData.name);
   }
 };
 
