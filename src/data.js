@@ -29,12 +29,14 @@ export let quizData = {
 
 
   export const options = [
-  {label: 'Movies', value:'https://opentdb.com/api.php?amount=10&category=11&difficulty=easy&type=multiple'},
-  {label: 'Music', value: 'https://opentdb.com/api.php?amount=10&category=12&difficulty=easy&type=multiple'},
-  {label: 'Sport', value: 'https://opentdb.com/api.php?amount=10&category=21&difficulty=easy&type=multiple'},
-  {label: 'Computer', value: 'https://opentdb.com/api.php?amount=10&category=18&difficulty=easy&type=multiple'},
-  {label: 'Geography', value:'https://opentdb.com/api.php?amount=10&category=22&difficulty=easy&type=multiple'},
-  {label:'History', value: 'https://opentdb.com/api.php?amount=10&category=23&difficulty=easy&type=multiple'}
+  {label: 'Movies', value:'https://opentdb.com/api.php?amount=30&category=11&difficulty=easy&type=multiple'},
+  {label: 'Music', value: 'https://opentdb.com/api.php?amount=30&category=12&difficulty=easy&type=multiple'},
+  {label: 'Sport', value: 'https://opentdb.com/api.php?amount=30&category=21&difficulty=easy&type=multiple'},
+  {label: 'Computer', value: 'https://opentdb.com/api.php?amount=20&category=18&difficulty=easy&type=multiple'},
+  {label: 'Geography', value:'https://opentdb.com/api.php?amount=20&category=22&difficulty=easy&type=multiple'},
+  {label:'History', value: 'https://opentdb.com/api.php?amount=20&category=23&difficulty=easy&type=multiple'},
+  {label: 'Books' , value:'https://opentdb.com/api.php?amount=20&category=10&difficulty=easy&type=multiple'},
+  {label: 'Vehicles' , value: 'https://opentdb.com/api.php?amount=10&category=28&difficulty=easy&type=multiple'}
   ]
 
  
