@@ -53,7 +53,7 @@ body {
   background-color: gray;
   content: "";
   z-index: -1;
-  background-image: url(img/background-img.jpg);
+  background-image: url('https://res.cloudinary.com/dtb1hpuil/image/upload/v1689522329/quiz_q3u4hx.jpg');
   
   background-size: cover;
   background-repeat: no-repeat;

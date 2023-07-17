@@ -1,4 +1,4 @@
-// import { submitAnswer } from './pages/questionPage.js';
+ import { submitAnswer } from './pages/questionPage.js';
 import {
     ANSWERS_LIST_ID,
     SUBMIT_ANSWER_BUTTON_ID,
@@ -7,7 +7,6 @@ import {
 export let timer;
 
 export const createTimer = (item) => {
-    console.log("new timer")
     let timerElement = document.querySelector ('#timerElement')
     if (!timerElement) {
         timerElement = document.createElement('div');

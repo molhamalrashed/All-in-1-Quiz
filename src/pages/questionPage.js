@@ -8,7 +8,7 @@ import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
 import { createScore } from '../views/scoreView.js';
-import { createStorage, retrieveStorage } from './sessionStorage.js';
+import { createStorage, retrieveStorage,storeQuizData } from './sessionStorage.js';
 import { displayResults } from '../views/endPage.js';
 import { createTimer, timer } from '../timer.js';
 import { popUp } from '../views/popUp.js';
@@ -17,10 +17,19 @@ let user;
 let timerObject;
 let savedSelection;
 export let submitClicked = false;
-export const initQuestionPage = ({userName,scoreValue,selectedAnswer}) => {
+export const initQuestionPage = ({userName,scoreValue,selectedAnswer,savedQuizData}) => {
   createStorage(user, null , score ,quizData.currentQuestionIndex);
   savedSelection = selectedAnswer;
-  
+ 
+
+  if(savedQuizData){
+    quizData.currentQuestionIndex = savedQuizData.currentQuestionIndex;
+    quizData.questions = savedQuizData.questions;
+    clearInterval(timer);
+
+  }
+
+
   user = userName;
   if(typeof scoreValue !== 'undefined'){score = scoreValue}
   const userInterface = document.getElementById(USER_INTERFACE_ID);
@@ -70,10 +79,10 @@ export const initQuestionPage = ({userName,scoreValue,selectedAnswer}) => {
 };
 
 const nextQuestion = () => {
-  console.log("next question");
-
+  
  if(submitClicked || timerObject.innerText === "Time's up!") {
   quizData.currentQuestionIndex = quizData.currentQuestionIndex + 1;
+  storeQuizData(quizData);
   if(quizData.currentQuestionIndex === quizData.questions.length){
   displayResults(user, score);
   return;
