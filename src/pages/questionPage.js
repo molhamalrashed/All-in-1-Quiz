@@ -7,7 +7,7 @@ import {
 import { createQuestionElement } from '../views/questionView.js';
 import { createAnswerElement } from '../views/answerView.js';
 import { quizData } from '../data.js';
-import { createScore } from '../views/scoreView.js';
+import { createScore, createIndex } from '../views/scoreView.js';
 import { createStorage, retrieveStorage,storeQuizData } from './sessionStorage.js';
 import { displayResults } from '../views/endPage.js';
 import { createTimer, timer } from '../timer.js';
@@ -19,6 +19,7 @@ let savedSelection;
 export let submitClicked = false;
 export const initQuestionPage = ({userName,scoreValue,selectedAnswer,savedQuizData}) => {
  
+  
   savedSelection = selectedAnswer;
   
  
@@ -40,7 +41,7 @@ export const initQuestionPage = ({userName,scoreValue,selectedAnswer,savedQuizDa
   userInterface.prepend(scoreElement);
 
   const currentQuestion = quizData.questions[quizData.currentQuestionIndex];
-
+  createIndex(quizData.currentQuestionIndex);
   timerObject = createTimer(currentQuestion);
   const timerElement = timerObject.timerElement;
   userInterface.appendChild(timerObject);
