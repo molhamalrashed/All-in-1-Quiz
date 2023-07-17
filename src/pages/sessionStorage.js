@@ -16,3 +16,15 @@ export const retrieveStorage = () => {
     }
     return data;
 }
+
+export const storeQuizData = (quizData) => {
+    sessionStorage.setItem("currentQuizData", JSON.stringify(quizData));
+}
+
+export const retrieveQuizData = () => {
+    let data = sessionStorage.getItem("currentQuizData");
+    if(data) {
+        data = JSON.parse(data);
+    }
+    return data;
+}

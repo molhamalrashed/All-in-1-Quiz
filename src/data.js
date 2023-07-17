@@ -1,5 +1,5 @@
 
-
+import { retrieveQuizData, storeQuizData } from "./pages/sessionStorage.js";
   /* Program Data
 
   in this file you can declare variables to store important data for your program
@@ -89,7 +89,7 @@ export let quizData = {
           currentQuestionIndex: 0,
           questions: questions
         }
-    
+        
         return Data;
     } catch(err) {
       console.log('error');
@@ -98,7 +98,7 @@ export let quizData = {
   
   export async function processQuizData(link) {
     quizData = await createQuizData(link);  
-    console.log(quizData);
+    storeQuizData(quizData);
   }
   
   
