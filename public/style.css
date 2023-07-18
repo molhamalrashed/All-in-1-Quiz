@@ -123,8 +123,7 @@ h1 h2 {
   width: 50%;
   height: 40px;
   line-height: 28px;
-  padding: 0 1rem;
-  padding-left: 2.5rem;
+  text-align: center;
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;
@@ -141,6 +140,8 @@ h1 h2 {
  }
  #userName::placeholder {
   color: #5f5f9b;
+  
+
  }
  #startButtonContainer {
   display: flex;
@@ -366,4 +367,73 @@ button {
   background-color: #85d6dca5;
   color: #000;
   transition: background-color 0.5s ease;
+}
+
+
+@media screen and (max-width: 650px),(max-height: 680px) {
+  .timerElement{
+    display:block;
+    position: relative;
+    font-size: 30px;
+    top: 53px;
+  }
+  .question-element h1 {
+    font-size: 20px;
+    position: relative;
+    left: -4%;
+    top: 0px;
+    transform: translateX(5%);
+    background-color: #404e699a;
+    border-radius: 20px;
+  }
+  .myScore{
+    position: relative;
+    top: 100px;
+    left: 14%;
+    padding: 5px;
+  }
+  .myIndex{
+    position: relative;
+    top: 20px;
+    left: 2%;
+    padding: 5px;
+  }
+  ul{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    list-style: none;
+    background-color: transparent;
+    margin-top: -30px
+  
+  }
+  ul li{
+    max-height: 10px;
+    padding:20px;
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+  }
+  button {
+    padding: 5px;
+  }
+  .final-message{
+    width: 90%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #categories-list{
+    text-align: center;
+  }
+  body {
+    background-image: url('https://res.cloudinary.com/dtb1hpuil/image/upload/v1689697820/quiz2_uv23si.jpg');
+  
+  }
+  #results-container {
+    display:flow-root;
+    background-color: #394c66ba;
+    border-radius: 15px;
+    margin: auto;
+  }
 }
