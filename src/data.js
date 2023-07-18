@@ -1,5 +1,8 @@
 
 import { retrieveQuizData, storeQuizData } from "./pages/sessionStorage.js";
+
+import { startQuiz } from "./pages/welcomePage.js";
+
   /* Program Data
 
   in this file you can declare variables to store important data for your program
@@ -94,6 +97,7 @@ export let quizData = {
         
         return Data;
     } catch(err) {
+      startQuiz(10);
       console.log('error');
     }
   }

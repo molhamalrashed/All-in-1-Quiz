@@ -2,6 +2,7 @@ import { USER_INTERFACE_ID, START_QUIZ_BUTTON_ID } from '../constants.js';
 import { createWelcomeElement } from '../views/welcomeView.js';
 import { initQuestionPage } from './questionPage.js';
 import { options, processQuizData } from '../data.js';
+import { errorPopUp } from '../views/popUp.js';
 
 
 let userName;
@@ -47,7 +48,7 @@ const categoriesList = document.createElement("select");
 categoriesList.id = "categories-list";
 const chooseCategory = document.createElement('h2');
 chooseCategory.id = 'choose-category'
-chooseCategory.textContent = "choose Your favorite category";
+chooseCategory.textContent = "Choose your favorite category";
 categoriesDiv.appendChild(chooseCategory);
 
 const placeholder = document.createElement("option");
@@ -58,6 +59,11 @@ options.forEach((option) => {
   optionElement.value = option.value;
   optionElement.textContent = option.label;
   categoriesList.appendChild(optionElement);
+})
+categoriesList.addEventListener('change', function(){
+  const selectedOption = categoriesList.options[categoriesList.selectedIndex];
+  const link = selectedOption.value;
+  processQuizData(link);
 })
 categoriesDiv.appendChild(categoriesList);
 userInterface.appendChild(categoriesDiv);
@@ -88,7 +94,7 @@ startButton.addEventListener('click', () => {
   
   // if the users enters a name call the countdown
   if (userName !== "" && categoryList.selectedIndex !== 0) {
-    processQuizData(link);
+    
     countdown(); // Call the countdown function if the name is entered
   } else {
      // Create the popup element
@@ -164,6 +170,12 @@ const countdown = () => {
 
 
 
-const startQuiz = () => {
+export const startQuiz = (test) => {
+  if(test === 10){
+    initWelcomePage();
+    errorPopUp();
+    test = 0;
+    return
+  }
   initQuestionPage({userName: userName, scoreValue : 0});
 };

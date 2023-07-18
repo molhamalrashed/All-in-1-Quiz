@@ -8,7 +8,7 @@ export const createScore = (score)=> {
     showScore = document.createElement('div');
     showScore.className = 'myScore';
     }
-    showScore.innerHTML = `Your score is: ${score}/100`;
+    showScore.innerHTML = `Your score is: ${score} / 100`;
     return showScore;
     }
     
@@ -19,6 +19,6 @@ export const createIndex = (index)=> {
         showIndex.className = 'myIndex';
         }
         userInterface.appendChild(showIndex);
-        showIndex.innerHTML = `You are in question: ${index} / 10`;
+        showIndex.innerHTML = `You are in question: ${index+1} / 10`;
         return showIndex;
      }
