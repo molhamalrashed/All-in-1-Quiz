@@ -87,7 +87,7 @@ startButton.addEventListener('click', () => {
   // get the select element and retrieve value from it
   const categoryList = document.getElementById("categories-list");
   const selectedOption = categoryList.options[categoryList.selectedIndex];
-  const link = selectedOption.value;
+  
   
    //get the users name 
   userName = userNameInput.value;
